@@ -49,8 +49,7 @@ class BookController {
 
     static async updateBook(req, res) {
         try {
-            const { title, publication_year, author_id } = req.body;
-            const updated = await BookService.updateBook(req.params.id, title, publication_year, author_id);
+            const updated = await BookService.updateBook(req.params.id, req.body);
 
             if (!updated) return res.status(404).json({ error: 'Book not found' });
 
